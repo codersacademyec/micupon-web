@@ -1,0 +1,1040 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>MiCup&oacute;n Ecuador</title>
+    <!-- meta info -->
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="keywords" content="U4innovation, Sebastian Montenegro" />
+    <meta name="description" content="MiCupon Ecuador">
+    <meta name="author" content="Sebastian Montenegro">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="css/boostrap.css">
+    <!-- Font Awesome styles (icons) -->
+    <link rel="stylesheet" href="css/font_awesome.css">
+    <!-- Main Template styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- IE 8 Fallback -->
+    <!--[if lt IE 9]>
+	<link rel="stylesheet" type="text/css" href="css/ie.css" />
+<![endif]-->
+
+    <!-- Your custom styles (blank file) -->
+    <link rel="stylesheet" href="css/mystyles.css">
+
+    <style>
+        .notContainer{
+            position: fixed;
+            top: 5px;
+            right: 5px;
+            z-index: 9999999;
+
+        }
+    </style>
+    <script>
+        var alertId = 0;
+        function addAlert(){
+            var alert = '<div class="alert alert-success fade in alert_'+alertId+'" role="alert"> Cupon enviado exitosamente.</div>'
+            setTimeout(function() {
+                $('.alert')[0].remove();
+            }, 3000);
+            $('.notContainer').append(alert);
+            alertId++;
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <div class="global-wrap">
+
+
+        <!-- //////////////////////////////////
+	//////////////MAIN HEADER///////////// 
+	////////////////////////////////////-->
+        <div class="top-main-area text-center">
+            <div class="container">
+                <a href="index.html" class="logo mt5">
+                    <img src="img/logo-small-dark.png" alt="Nombre alternativo de la imagen" title="Título de la imagen" />
+                </a>
+            </div>
+        </div>
+        <div class="notContainer">
+            
+        </div>
+        <header class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- MAIN NAVIGATION -->
+                        <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
+                        <nav>
+                            <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
+                                <li class="active"><a href="index.html">Home</a></li>
+                                <li><a href="#">Destacados</a></li>
+                                <li><a href="#">En tu ciudad</a></li>
+                                <li><a href="#">Productos</a></li>
+                                <li><a href="#">Viajes</a></li>
+                                <li><a href="#">Tiempo Libre</a></li>
+                            </ul>
+                        </nav>
+                        <!-- END MAIN NAVIGATION -->
+                    </div>
+                    <div class="col-md-6">
+                        <!-- LOGIN REGISTER LINKS -->
+                        <ul class="login-register">
+                            <li class="shopping-cart"><a href="#"><i class="fa"></i>Ayuda</a></li>
+                            <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Iniciar Sesi&oacute;n</a>
+                            </li>
+                            <li><a class="popup-text" href="#register-dialog" data-effect="mfp-move-from-top"><i class="fa fa-edit"></i>Registrarse</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- LOGIN REGISTER LINKS CONTENT -->
+        <div id="login-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
+            <i class="fa fa-sign-in dialog-icon"></i>
+            <h3>Iniciar Sesi&oacute;n</h3>
+            <h5>Bienvenido amigo nuevamente! inicia sesi&oacute;n</h5>
+            <form class="dialog-form">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="text" placeholder="email@dominio.com" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Clave</label>
+                    <input type="password" placeholder="Mi clave secreta" class="form-control">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">Recordarme
+                    </label>
+                </div>
+                <input type="submit" value="Iniciar Sesion" class="btn btn-primary">
+            </form>
+            <ul class="dialog-alt-links">
+                <li><a class="popup-text" href="#register-dialog" data-effect="mfp-zoom-out">No soy miembro</a>
+                </li>
+                <li><a class="popup-text" href="#password-recover-dialog" data-effect="mfp-zoom-out">Olvid&eacute; mi clave</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div id="register-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
+            <i class="fa fa-edit dialog-icon"></i>
+            <h3>Registrarse</h3>
+            <h5>Aun no utilizas nuestros cupones? V&aacute;mos! r&eacute;gistrate!</h5>
+            <form class="dialog-form">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="text" placeholder="email@dominio.com" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Clave</label>
+                    <input type="password" placeholder="Mi Clave Secreta" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Repetir Clave</label>
+                    <input type="password" placeholder="Re ingresa tu clave" class="form-control">
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label>Localidad</label>
+                            <input type="password" placeholder="Guayaquil" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>C&oacute;digo Postal</label>
+                            <input type="password" placeholder="12345" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">Recibir ofertas por email
+                    </label>
+                </div>
+                <input type="submit" value="Registrarse" class="btn btn-primary">
+            </form>
+            <ul class="dialog-alt-links">
+                <li><a class="popup-text" href="#login-dialog" data-effect="mfp-zoom-out">Ya soy miembro</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div id="password-recover-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
+            <i class="icon-retweet dialog-icon"></i>
+            <h3>Recuperaci&oacute;n de clave</h3>
+            <h5>Olvid&oacute; su clave? No te preocupes te la enviamos nuevamente!</h5>
+            <form class="dialog-form">
+                <label>E-mail</label>
+                <input type="text" placeholder="email@dominio.com" class="span12">
+                <input type="submit" value="Recuperar clave" class="btn btn-primary">
+            </form>
+        </div>
+        <!-- END LOGIN REGISTER LINKS CONTENT -->
+
+
+
+        <!-- SEARCH AREA -->
+        <form class="search-area form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 clearfix">
+                        <label><i class="fa fa-search"></i><span>Cupones de</span>
+                        </label>
+                        <div class="search-area-division search-area-division-input">
+                            <input class="form-control" type="text" placeholder="Viajes" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 clearfix">
+                        <label><i class="fa fa-map-marker"></i><span>En</span>
+                        </label>
+                        <div class="search-area-division search-area-division-location">
+                            <input class="form-control" type="text" placeholder="Quito" />
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-block btn-white search-btn" type="submit">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- END SEARCH AREA -->
+
+        <div class="gap"></div>
+
+
+        <!-- //////////////////////////////////
+	//////////////END MAIN HEADER////////// 
+	////////////////////////////////////-->
+
+
+        <!-- //////////////////////////////////
+	//////////////PAGE CONTENT///////////// 
+	////////////////////////////////////-->
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <aside class="sidebar-left">
+                        <ul class="nav nav-tabs nav-stacked nav-coupon-category nav-coupon-category-left">
+                            <li class="active"><a href="#"><i class="fa fa-ticket"></i>Todos<span>50</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-cutlery"></i>Comidas & Bebidas<span>33</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-calendar"></i>Eventos<span>37</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-female"></i>Belleza<span>39</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-bolt"></i>Fitness<span>38</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-headphones"></i>Electr&oacute;nicos<span>30</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-image"></i>Servicios personales<span>33</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-umbrella"></i>Indumentaria de Mujer<span>31</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i>Productos<span>45</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-home"></i>Hogar & Jard&iacute;n<span>39</span></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-plane"></i>Viajes<span>48</span></a>
+                            </li>
+                        </ul>
+                        <div class="sidebar-box">
+                            <h5>Filtrar por precios</h5>
+                            <input type="text" id="price-slider">
+                        </div>
+                        <div class="sidebar-box">
+                            <h5>Caracter&iacute;sticas</h5>
+                            <ul class="checkbox-list">
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Nuevos <small>(50)</small>
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Liquidaci&oacute;n <small>(70)</small>
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Populares <small>(32)</small>
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Temporada <small>(27)</small>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-box">
+                            <h5>Cuando?</h5>
+                            <ul class="checkbox-list">
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Esta semana <small>(60)</small>
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Pr&oacute;xima semana <small>(37)</small>
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Luego 2da semana <small>(23)</small>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-box">
+                            <h5>Ubicaci&oacute;n</h5>
+                            <ul class="checkbox-list">
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Todas <small>(657)</small>
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Quito <small>(120)</small>
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Guayaquil <small>(13)</small>
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Cuenca <small>(32)</small>
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Loja <small>(53)</small>
+                                    </label>
+                                </li>
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="i-check">Salinas <small>(21)</small>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="product-sort">
+                                <span class="product-sort-selected">Ordenado por <b>Precio</b></span>
+                                <a href="#" class="product-sort-order fa fa-angle-down"></a>
+                                <ul>
+                                    <li><a href="#">Ordenado por nombre</a>
+                                    </li>
+                                    <li><a href="#">Por pr&oacute;ximo a vencerse</a>
+                                    </li>
+                                    <li><a href="#">Por popularidad</a>
+                                    </li>
+                                    <li><a href="#">Ordenado por ubicaci&oacute;n</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-md-offset-7">
+                            <div class="product-view pull-right">
+                                <a class="fa fa-th-large active" href="#"></a>
+                                <a class="fa fa-list" href="#"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-wrap">
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                <header class="product-header"><span class="product-label label label-warning">Muy solicitado</span>
+                                    <img src="img/hotel.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                    <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/subway.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                       <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/resto.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                       <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a> 
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/tenis.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                      
+                        
+                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                <header class="product-header"><span class="product-label label label-danger">Por agotarse</span>
+                                    <img src="img/iris.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                <header class="product-header"><span class="product-label label label-success">Novedad</span>
+                                    <img src="img/cine.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/comida1.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/gym.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/cafe.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/depi.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/chica.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/bowling.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/barco.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/dientes.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                     <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                       
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/pizza.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/alineado.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/balanceo.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                        
+                        
+                        <a class="col-md-4" href="#">
+                            <div class="product-thumb">
+                                <header class="product-header">
+                                    <img src="img/hotel1.jpg" alt="Nombre alternativo de la imagen" title="Título del cupon" />
+                                </header>
+                                <div class="product-inner">
+                                    <h5 class="product-title">T&iacute;tulo del cup&oacute;n</h5>
+                                    <p class="product-desciption">Alguna descripci&oacute;n del beneficio obtenido con la compra de este cup&oacute;n.</p>
+                                        <ul class="product-price-list">
+                                            <li><span class="product-price">$104</span>
+                                            </li>
+                                            <li><span class="product-old-price">$227</span>
+                                            </li>
+                                            <li><span class="product-save">Ahorra 46%</span>
+                                            </li>
+                                        </ul>
+                                    <div>
+                                    <p>
+                                        <form>
+                                            <input type="button" onclick="addAlert()" class="btn btn-primary" value="Enviar Cupon" />
+                                        </form>
+									</p>
+                                    </div>
+                                    <p class="product-location"><i class="fa fa-map-marker"></i> Guayaquil</p>
+                                </div>
+                            </div>
+                        </a>                       
+                   </div>
+                    <ul class="pagination">
+                        <li class="prev disabled">
+                            <a href="#"></a>
+                        </li>
+                        <li class="active"><a href="#">1</a>
+                        </li>
+                        <li><a href="#">2</a>
+                        </li>
+                        <li><a href="#">3</a>
+                        </li>
+                        <li><a href="#">4</a>
+                        </li>
+                        <li><a href="#">5</a>
+                        </li>
+                        <li class="next">
+                            <a href="#"></a>
+                        </li>
+                    </ul>
+                    <div class="gap"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- //////////////////////////////////
+	//////////////END PAGE CONTENT///////// 
+	////////////////////////////////////-->
+
+
+
+        <!-- //////////////////////////////////
+	//////////////MAIN FOOTER////////////// 
+	////////////////////////////////////-->
+
+        <footer class="main">
+            <div class="footer-top-area">
+                <div class="container">
+                    <div class="row row-wrap">
+                        <div class="col-md-3">
+                            <a href="index.html">
+                                <img src="img/logo.png" alt="logo" title="logo" class="logo">
+                            </a>
+                            <ul class="list list-social">
+                                <li>
+                                    <a class="fa fa-facebook box-icon" href="#" data-toggle="tooltip" title="Facebook"></a>
+                                </li>
+                                <li>
+                                    <a class="fa fa-twitter box-icon" href="#" data-toggle="tooltip" title="Twitter"></a>
+                                </li>
+                                <li>
+                                    <a class="fa fa-flickr box-icon" href="#" data-toggle="tooltip" title="Flickr"></a>
+                                </li>
+                                <li>
+                                    <a class="fa fa-linkedin box-icon" href="#" data-toggle="tooltip" title="LinkedIn"></a>
+                                </li>
+                                <li>
+                                    <a class="fa fa-tumblr box-icon" href="#" data-toggle="tooltip" title="Tumblr"></a>
+                                </li>
+                            </ul>
+                            <p>MiCup&oacute;n es el sitio de descuentos en cupones por excelencia de Ecuador.. <br>que esperas para tener el tuyo!?</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Suscribirse a nuestro Newsletter</h4>
+                            <div class="box">
+                                <form>
+                                    <div class="form-group mb10">
+                                        <label>E-mail</label>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                    <p class="mb10">Somos responsables con tu informaci&oacute;n. No la venderemos!</p>
+                                    <input type="submit" class="btn btn-primary" value="Suscribirse" />
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Mi Cup&oacute;n en Twitter</h4>
+                            <!-- START TWITTER -->
+                            <div class="twitter-ticker" id="twitter-ticker">
+                            
+                            <div id="tweet"></div>
+<a class="twitter-timeline" data-lang="es" data-height="200" data-dnt="true" href="https://twitter.com/u4innovation">Tweets by u4innovation</a> <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>                            </div>
+                            <!-- END TWITTER -->
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Ultimas novedades</h4>
+                            <ul class="thumb-list">
+                                <li>
+                                    <a href="#">
+                                        <img src="img/70x70.png" alt="Nombre alternativo de la imagen" title="Titulo" />
+                                    </a>
+                                    <div class="thumb-list-item-caption">
+                                        <p class="thumb-list-item-meta">26 de Sep 2016</p>
+                                        <h5 class="thumb-list-item-title"><a href="#">Algun t&iacute;tulo</a></h5>
+                                        <p class="thumb-list-item-desciption">Alguna descripci&oacute;n de la noticia</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="img/70x70.png" alt="Nombre alternativo de la imagen" title="Titulo" />
+                                    </a>
+                                    <div class="thumb-list-item-caption">
+                                        <p class="thumb-list-item-meta">26 de Sep 2016</p>
+                                        <h5 class="thumb-list-item-title"><a href="#">Algun t&iacute;tulo</a></h5>
+                                        <p class="thumb-list-item-desciption">Alguna descripci&oacute;n de la noticia</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="img/70x70.png" alt="Nombre alternativo de la imagen" title="Titulo" />
+                                    </a>
+                                    <div class="thumb-list-item-caption">
+                                        <p class="thumb-list-item-meta">26 de Sep 2016</p>
+                                        <h5 class="thumb-list-item-title"><a href="#">Algun t&iacute;tulo</a></h5>
+                                        <p class="thumb-list-item-desciption">Alguna descripci&oacute;n de la noticia</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <p>Copyright &copy; 2016, MiCup&oacute;n, Desarrollado por <a href="http://www.u4innovation.com" target="_blank">U4innovation</a></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- //////////////////////////////////
+	//////////////END MAIN  FOOTER///////// 
+	////////////////////////////////////-->
+
+
+
+        <!-- Scripts queries -->
+        <script src="js/jquery.js"></script>
+        <script src="js/boostrap.min.js"></script>
+        <script src="js/countdown.min.js"></script>
+        <script src="js/flexnav.min.js"></script>
+        <script src="js/magnific.js"></script>
+        <script src="js/tweet.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="js/fitvids.min.js"></script>
+        <script src="js/mail.min.js"></script>
+        <script src="js/ionrangeslider.js"></script>
+        <script src="js/icheck.js"></script>
+        <script src="js/fotorama.js"></script>
+        <script src="js/card-payment.js"></script>
+        <script src="js/owl-carousel.js"></script>
+        <script src="js/masonry.js"></script>
+        <script src="js/nicescroll.js"></script>
+
+        <!-- Custom scripts -->
+        <script src="js/custom.js"></script>
+    </div>
+</body>
+
+</html>
