@@ -1,0 +1,8 @@
+al dar click en enviar cupón debe:
+dejar grabado en cupones un codigo de que se envió (asignar a local)
+enviar un push a los moviles (codeblock) de que se ha enviado el cupón con nro. y demás datos del cupón.
+
+
+Si usamos el login ==>  revisar como deja grabado el usuario.
+Ver si se loguean desde desktop como sería el tema del token.
+
