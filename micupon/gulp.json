@@ -1,0 +1,24 @@
+{
+    "secciones": [
+        "index"
+    ],
+    "core": [
+    	"main",
+    	"app",
+    	"servicios/globalService"
+    ],
+    "libs": [
+    	"jquery",
+    	"bootstrap.min",
+    	"material",
+    	"ripples",
+    	"moment",
+    	"bootstrap-material-datetimepicker",
+    	"angular",
+    	"angular-animate.min",
+    	"angular-strap.min",
+    	"angular-strap.tpl",
+    	"angular-table",
+        "angular-perfect-scrollbar"
+    ]
+}
