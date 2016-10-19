@@ -1,5 +1,5 @@
 angular.module('micupon',['ngAnimate','mgcrea.ngStrap','angular-table','angular-perfect-scrollbar-2'])
-.constant('contextPath', 'sarasa')
+.constant("socialProvider", ["facebook", "google"])
 .config(['$httpProvider', function($httpProvider) {
     if (!$httpProvider.defaults.headers.get) {
         $httpProvider.defaults.headers.get = {};    
