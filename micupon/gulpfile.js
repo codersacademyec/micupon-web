@@ -80,7 +80,7 @@ function minifyJs(srcList,filename){
 
 gulp.task('build',['css','scripts']);
 
-gulp.task('default', function () {
+gulp.task('serve',function () {
   var file = new static.Server({cache:-1});
   require('http').createServer(function (request, response) {
    request.addListener('end', function () {
@@ -95,3 +95,5 @@ gulp.task('default', function () {
   }).resume();
  }).listen(8082);
 });
+
+gulp.task('default', ['watch','serve']);
