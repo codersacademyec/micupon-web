@@ -15,34 +15,38 @@ function indexService(globalService,socialProvider) {
     }
     
     function getItems(filtro) {
-        return globalService.post('mocks/bandas.json', {
-            filtro: filtro
-        }).then(function(resp) {
-            return resp;
-        });
-    }
+        return Stamplay.Object("cupones").get(filtro)
+        .then(function(res) {
+          return res.data;
+        }); 
+    };
 
     function updateItem(item){
-        return globalService.post('backend', {
-            item: item
-        }).then(function(resp) {
-            return resp;
-        });
+       Stamplay.Object("cupones").update("codigo",item)
+        .then(function(res) {
+          // success
+        }, function(err) {
+          // error
+        }) 
     }
 
     function deleteItem(item){
-        return globalService.post('backend', {
-            item: item
-        }).then(function(resp) {
-            return resp;
-        });
+       Stamplay.Object("cupones").remove("codigo")
+        .then(function(res) {
+          // success
+        }, function(err) {
+          // error
+        }) 
     }
 
     function saveItem(item){
-        return globalService.post('backend', {
-            item: item
-        }).then(function(resp) {
-            return resp;
-        });        
+        Stamplay.Object("cupones").save(item)
+        .then(function(res) {
+           addAlert();
+        }, function(err) {
+            // TODO MOSTRAR ERROR
+        })       
     }
+
+
 }
