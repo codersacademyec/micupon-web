@@ -19,7 +19,7 @@ function indexService(globalService,socialProvider) {
         .then(function(res) {
           return res.data;
         }); 
-    };
+    }
 
     function updateItem(item){
        Stamplay.Object("cupones").update("codigo",item)

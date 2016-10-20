@@ -88,7 +88,7 @@ $("#price-slider").ionRangeSlider({
 $('#flexnav').flexNav();
 
 
-
+/*
 // Lighbox text
 $('.popup-text').magnificPopup({
     removalDelay: 500,
@@ -100,7 +100,7 @@ $('.popup-text').magnificPopup({
     },
     midClick: true
 });
-
+*/
 // Lightbox iframe
 $('.popup-iframe').magnificPopup({
     dispableOn: 700,

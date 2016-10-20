@@ -1,0 +1,10 @@
+{
+  "appId": "micupon",
+  "apiKey": "8cb175461497f9ba785c498962d16cd4d7a09753b9c93bff97538a053a1d2e8a",
+  "public": "./",
+  "ignore": [
+    "stamplay.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

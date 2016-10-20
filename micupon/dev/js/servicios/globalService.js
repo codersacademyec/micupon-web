@@ -27,9 +27,9 @@ function globalService($http) {
             }
             var msg;
             if(response.status == 406){
-                var msg = response.data;
+                msg = response.data;
             }else{
-                var msg = "Ocurrio un error inesperado.";
+                msg = "Ocurrio un error inesperado.";
             }
             showNot(msg,'danger');
         }

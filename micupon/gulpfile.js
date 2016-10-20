@@ -96,4 +96,4 @@ gulp.task('serve',function () {
  }).listen(8082);
 });
 
-gulp.task('default', ['watch','serve']);
+gulp.task('default', ['build','watch','serve']);
