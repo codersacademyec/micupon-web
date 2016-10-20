@@ -44,7 +44,7 @@ function indexCtrl($scope,globalService,indexService,$modal) {
 	};
 
 	vm.guardar = function(item){
-		indexService.saveItem(item);
+		indexService.nuevo(item);
 	};
 	
 	vm.limpiarFiltros = function(){
