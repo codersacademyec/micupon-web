@@ -1,6 +1,6 @@
-angular.module('micupon').factory('globalService', ['$http','contextPath',globalService]);
+angular.module('micupon').factory('globalService', ['$http',globalService]);
 
-function globalService($http,contextPath) {
+function globalService($http) {
     var successMessage = '';
     var loadText = '';
     var blockActions = false;
@@ -21,7 +21,7 @@ function globalService($http,contextPath) {
         dismissWait();
         if(response.status != 200){
             if(response.status == 999){
-                location.href = contextPath+'/login';
+                location.href = '/login';
                 dismissWait();
                 return;
             }
