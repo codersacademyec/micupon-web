@@ -14,9 +14,27 @@ function indexService(globalService,socialProvider) {
         Stamplay.User.socialLogin(socialProvider[i]);    
     }
     
-    function getItems(filtro) {
+    function getItems(filtro, user) {
         return Stamplay.Object("cupones").get(filtro)
         .then(function(res) {
+            if(res.data){
+                for (var i = res.data.length - 1; i >= 0; i--) {
+                    if(user){
+                        Stamplay.Object("cupones_usuarios").get({usuario:user._id,codigo:res.data[i].codigo})
+                        .then(function(res) {
+                            if(res){
+                                res.data[i].disable = true;
+                            }else{
+                                res.data[i].disable = false;
+                            }
+                        }, function(err) {
+                            // TODO MOSTRAR ERROR
+                        })
+                    } else{
+                        res.data[i].disable = false;
+                    }             
+                }                
+            }
           return res.data;
         }); 
     }
@@ -32,8 +50,8 @@ function indexService(globalService,socialProvider) {
 
     function deleteItem(item){
        Stamplay.Object("cupones").remove("codigo")
-        .then(function(res) {
-          // success
+        .then(function(response) {
+            // success
         }, function(err) {
           // error
         }) 
@@ -49,5 +67,5 @@ function indexService(globalService,socialProvider) {
         })       
     }
 
-
+    
 }

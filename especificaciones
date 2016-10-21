@@ -1,8 +1,14 @@
-al dar click en enviar cupón debe:
-dejar grabado en cupones un codigo de que se envió (asignar a local)
-enviar un push a los moviles (codeblock) de que se ha enviado el cupón con nro. y demás datos del cupón.
+Solicitado
+
+A) Al dar click en enviar cupón debe:
+	1 - Dejar grabado en cupones_usuario el código del cupón y el id del usuario logueado.
+	2 - enviar un mensaje push al móvil del usuario logueado informando de la operación realizada. Usar el login pasa obtener el token para la notificación push.
+
+B) Inhabilitar el boton enviar cupon (una vez realizada esa acción para ese usuario)
 
 
-Si usamos el login ==>  revisar como deja grabado el usuario.
-Ver si se loguean desde desktop como sería el tema del token.
+ANALISIS PARA FUTURAS TAREAS:
 
+	1- Para el envío del cupón, será posible si la persona se loguea a google/facebook y previamente ha descargado la aplicación y se ha logueado con alguna de estas cuentas. Es de la única manera en que se puede obtener el token del dispositivo del usuario.
+
+	2 - La persona podría enviar tokens a los dispositivos de otra persona (ingresando el mail de la misma) si y solo sí, la persona ha descargado la aplicación y se ha logurado con ese mail. Caso contrario, se puede enviar un mail a la casilla de correo, con los detalles del cupon, y con links a la aplicación mobile y web.
