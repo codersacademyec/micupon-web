@@ -39,11 +39,11 @@ function indexService(globalService,socialProvider) {
         }) 
     }
 
-    function saveItem(code){
+    function saveItem(code, user){
 
         Stamplay.Object("cupones_usuarios").save({usuario:'57feba3ca3b12b294d4891c0',codigo:code})
         .then(function(res) {
-           addAlert();
+            addAlert();
         }, function(err) {
             // TODO MOSTRAR ERROR
         })       
