@@ -40,9 +40,9 @@ function indexService(globalService,socialProvider) {
     }
 
     function saveItem(code, user){
-
-        Stamplay.Object("cupones_usuarios").save({usuario:'57feba3ca3b12b294d4891c0',codigo:code})
+        Stamplay.Object("cupones_usuarios").save({usuario:user._id,codigo:code})
         .then(function(res) {
+            globalService.sendPush(user.perfil.push_token,'El cupón ha sido enviado a su movil.');
             addAlert();
         }, function(err) {
             // TODO MOSTRAR ERROR

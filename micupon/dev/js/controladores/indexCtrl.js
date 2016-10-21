@@ -50,7 +50,12 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
     };
 
     vm.guardar = function(item) {
-        indexService.nuevo(item);
+        if(!$rootScope.user){
+            $('#login-dialog').modal();
+        }
+        else{
+            indexService.nuevo(item,$rootScope.user);
+        }
     };
 
     vm.limpiarFiltros = function() {
