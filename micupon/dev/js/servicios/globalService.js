@@ -1,6 +1,6 @@
-angular.module('micupon').factory('globalService', ['$http',globalService]);
+angular.module('micupon').factory('globalService', ['$http','$rootScope',globalService]);
 
-function globalService($http) {
+function globalService($http,$rootScope) {
     var successMessage = '';
     var loadText = '';
     var blockActions = false;
@@ -10,8 +10,21 @@ function globalService($http) {
         post: doPost,
         wait: isWaiting,
         loadingText: loadingText,
-        blockActions: isBlocked
+        blockActions: isBlocked,
+        logout: logout,
+        sendPush: sendPush
     };
+    function sendPush(token,mensaje){
+        $http.post('https://micupon.stamplayapp.com/api/codeblock/v1/run/pushcercanos',{
+                    "token" : token,
+                    "mensaje" : mensaje
+                });
+    }
+    function logout() {
+        var jwt = window.location.origin + "-jwt";
+        window.localStorage.removeItem(jwt);
+        $rootScope.user = false;
+    }
     function manageSuccess(response){
         dismissWait();
         if(successMessage != ""){showNot(successMessage,'success');}
