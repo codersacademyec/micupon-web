@@ -64,9 +64,6 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
         vm.filtros = {};
     };
 
-
-    vm.buscar();
-    
     AccountService.currentUser()
         .then(function(user) {
             if (user || $rootScope.user) {
@@ -81,4 +78,7 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
                     });
             }
         });
+
+    vm.buscar();   
+    
 }
