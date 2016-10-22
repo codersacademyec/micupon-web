@@ -14,21 +14,21 @@ function indexService(globalService,socialProvider) {
         Stamplay.User.socialLogin(socialProvider[i]);    
     }
     
-    function getItems(filtro, user) {
+    function getItems(filtro, user) {  //TODO VER PORQUE CONSULTA PRIMERO Y LUEGO VERIFICA SI EL USER ESTÁ LOGUEADO - HACE QUE NUNCA LLEGUE EL USER Y SE PUEDAN DESHABILITAR LOS CUPONES ENVIADOS
         return Stamplay.Object("cupones").get(filtro)
         .then(function(res) {
                 if(res.data){
                     cupones = [];                    
                     for (var i = res.data.length - 1; i >= 0; i--) {
-                        cupon = res.data[i];
-                        cupon.flag = "0";
+                        cupon = res.data[i]; // tomamos el cupon
+                        cupon.flag = false; // seteamos que sea editable
                         if(user){ // si hay usuario logueado
-                            Stamplay.Object("cupones_usuarios").get({usuario:user._id}) // traemos los codigos que tiene enviados el usuario
+                            Stamplay.Object("cupones_usuarios").get({usuario:user._id}) // buscamos los codigos que tiene enviados el usuario
                             .then(function(response) {
                                 if(response){
                                     for (var j = res.codigos.length - 1; j >= 0; j--) {
                                        if(cupon.codigo == response.data[j].codigo){ // si alguno de los codigos que vienen ya fue enviado para el usuario, lo deshabilitamos
-                                            cupon.flag = "1";
+                                            cupon.flag = true; // seteamos que no sea editable porque ya se envió este cupon
                                         }
                                     } 
                                 }                          
@@ -36,10 +36,10 @@ function indexService(globalService,socialProvider) {
                                 // TODO MOSTRAR ERROR
                             })
                         } 
-                        cupones.push(cupon);
+                        cupones.push(cupon); // agregamos el cupon modificado
                     }
                 }
-                res.data = cupones;
+                res.data = cupones; // pisamos los cupones
                 return res.data;    
             }, function(err) {
                 // TODO MOSTRAR ERROR
