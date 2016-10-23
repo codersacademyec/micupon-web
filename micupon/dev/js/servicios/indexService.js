@@ -26,10 +26,12 @@ function indexService(globalService,socialProvider) {
                             Stamplay.Object("cupones_usuarios").get({usuario:user._id}) // buscamos los codigos que tiene enviados el usuario
                             .then(function(response) {
                                 if(response){
-                                    for (var j = res.codigos.length - 1; j >= 0; j--) {
-                                       if(cupon.codigo == response.data[j].codigo){ // si alguno de los codigos que vienen ya fue enviado para el usuario, lo deshabilitamos
+                                    for (var j = response.data.length - 1; j >= 0; j--) {
+                                       for (var k = response.data[j].codigos.length - 1; k >= 0; k--) {
+                                           if(cupon._id == response.data[j].codigos[k]){ // si alguno de los codigos que vienen ya fue enviado para el usuario, lo deshabilitamos
                                             cupon.flag = true; // seteamos que no sea editable porque ya se envió este cupon
                                         }
+                                       }                                       
                                     } 
                                 }                          
                             }, function(err) {
@@ -43,7 +45,7 @@ function indexService(globalService,socialProvider) {
                 return res.data;    
             }, function(err) {
                 // TODO MOSTRAR ERROR
-            });
+        });
     }
 
     function updateItem(item){
@@ -64,11 +66,11 @@ function indexService(globalService,socialProvider) {
         }) 
     }
 
-    function saveItem(code, user){
+    function saveItem(codeId, user){
         Stamplay.Object("cupones_usuarios").get({usuario:user._id}) // buscamos codigos enviados del usuario
         .then(function(response) {
-            if(response){ // si hay registro para el usuario
-                response.codigos.push(code); // agregamos uno más a la lista de codigos
+            if(response && response.length > 0){ // si hay registro para el usuario
+                response.codigos.push(codeId); // agregamos uno más a la lista de codigos
                 Stamplay.Object("cupones_usuarios").patch({usuario:user._id,codigos:response.codigos}) // actualizamos los codigos enviados del usuario
                 .then(function(res) {
                     globalService.sendPush(user.perfil.push_token,'El cupón ha sido enviado a su movil.'); // enviamos la notificación push
@@ -77,7 +79,7 @@ function indexService(globalService,socialProvider) {
                     // TODO MOSTRAR ERROR
                 }) 
             }else{
-                Stamplay.Object("cupones_usuarios").save({usuario:user._id, codigos:code}) // creamos un registro para el usuario en cupones_usuario
+                Stamplay.Object("cupones_usuarios").save({usuario:user._id, codigos:codeId}) // creamos un registro para el usuario en cupones_usuario
                 .then(function(res) {
                     globalService.sendPush(user.perfil.push_token,'El cupón ha sido enviado a su movil.'); // enviamos la notificación push
                     addAlert(); // mostramos mensaje en pantalla
@@ -87,6 +89,7 @@ function indexService(globalService,socialProvider) {
             }
         }, function(err) {
             // TODO MOSTRAR ERROR
+            
         })      
     }
 
