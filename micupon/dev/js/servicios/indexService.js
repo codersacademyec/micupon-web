@@ -71,18 +71,16 @@ function indexService(globalService,socialProvider) {
         .then(function(response) {
             if(response && response.length > 0){ // si hay registro para el usuario
                 response.codigos.push(codeId); // agregamos uno más a la lista de codigos
-                Stamplay.Object("cupones_usuarios").patch({usuario:user._id,codigos:response.codigos}) // actualizamos los codigos enviados del usuario
+                Stamplay.Object("cupones_usuarios").patch(response._id,{codigos:response.codigos}) // actualizamos los codigos enviados del usuario
                 .then(function(res) {
-                    globalService.sendPush(user.perfil.push_token,'El cupón ha sido enviado a su movil.'); // enviamos la notificación push
-                    addAlert(); // mostramos mensaje en pantalla
+                    notificaciones(user);
                 }, function(err) {
                     // TODO MOSTRAR ERROR
                 }) 
             }else{
-                Stamplay.Object("cupones_usuarios").save({usuario:user._id, codigos:codeId}) // creamos un registro para el usuario en cupones_usuario
+                Stamplay.Object("cupones_usuarios").save({usuario:user._id, codigos:[codeId]}) // creamos un registro para el usuario en cupones_usuario
                 .then(function(res) {
-                    globalService.sendPush(user.perfil.push_token,'El cupón ha sido enviado a su movil.'); // enviamos la notificación push
-                    addAlert(); // mostramos mensaje en pantalla
+                    notificaciones(user);
                 }, function(err) {
                     // TODO MOSTRAR ERROR
                 }) 
@@ -91,6 +89,11 @@ function indexService(globalService,socialProvider) {
             // TODO MOSTRAR ERROR
             
         })      
+    }
+
+    function notificaciones(user){
+        globalService.sendPush(user.perfil.push_token,'El cupón ha sido enviado a su movil.'); // enviamos la notificación push
+        addAlert(); // mostramos mensaje en pantalla
     }
 
     
