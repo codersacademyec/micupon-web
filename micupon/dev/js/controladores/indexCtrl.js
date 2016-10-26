@@ -15,17 +15,14 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
         .then(function(user) {
             if (user || $rootScope.user) {
                 $rootScope.user = user ? user : $rootScope.user;
-                Stamplay.Object("usuarios").get({
-                        owner: $rootScope.user._id
-                    })
+                Stamplay.Object("usuarios").get({owner: $rootScope.user._id})
                     .then(function(res) {
                         $rootScope.user.perfil = res.data[0];
                     }, function(err) {
-                        console.log(err);
-                    });
+                        //Console.log(err);
+                    })
             }
-			vm.buscar();
-            
+			vm.buscar();       
         });
 
     vm.modalEliminar = $modal({

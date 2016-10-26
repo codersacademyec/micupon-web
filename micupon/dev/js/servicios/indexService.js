@@ -15,16 +15,21 @@ function indexService(globalService,socialProvider) {
     }
     
     function getItems(filtro, user) {  //TODO VER PORQUE CONSULTA PRIMERO Y LUEGO VERIFICA SI EL USER ESTÁ LOGUEADO - HACE QUE NUNCA LLEGUE EL USER Y SE PUEDAN DESHABILITAR LOS CUPONES ENVIADOS
-        return Stamplay.Object("cupones").get(filtro)
-        .then(function(res) {
-               return =  $http.post('https://micupon.stamplayapp.com/api/codeblock/v1/run/cuponespersonas',{
-                    "result" : res,
-                    "user" : user
+        return Stamplay.Object("cupones").get(filtro)      
+            .then(function(res) {
+                
+                Stamplay.Codeblock("cuponespersonas").get({result: res, user : user}, function(err, resCB) {
+                    if(resCB){
+                        return resCB;
+                    }
+                    if(err){
+                        //Console.log(err);
+                    }
                 });
 
             }, function(err) {
-              console.log(err);
-        });
+              //Console.log(err);
+            })
     }
 
     function updateItem(item){
@@ -32,7 +37,7 @@ function indexService(globalService,socialProvider) {
         .then(function(res) {
           // success
         }, function(err) {
-            console.log(err);
+            //Console.log(err);
         }) 
     }
 
@@ -41,7 +46,7 @@ function indexService(globalService,socialProvider) {
         .then(function(response) {
             // success
         }, function(err) {
-          console.log(err);
+          //Console.log(err);
         }) 
     }
 
@@ -54,20 +59,19 @@ function indexService(globalService,socialProvider) {
                 .then(function(res) {
                     notificaciones(user);
                 }, function(err) {
-                   console.log(err);
+                   //Console.log(err);
                 }) 
             }else{
-                var codes = {codeId};
-                var data = {usuario:user._id, codigos:codes};
-                Stamplay.Object("cupones_usuarios").save({usuario:user._id, codigos:[codeId]}) // creamos un registro para el usuario en cupones_usuario
+                var data = {usuario:user._id, codigos:[codeId]};
+                Stamplay.Object("cupones_usuarios").save(data) // creamos un registro para el usuario en cupones_usuario
                 .then(function(res) {
                     notificaciones(user);
                 }, function(err) {
-                    console.log(err);
+                    //Console.log(err);
                 }) 
             }
         }, function(err) {
-            console.log(err);
+            //Console.log(err);
         })      
     }
 

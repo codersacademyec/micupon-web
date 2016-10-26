@@ -70,12 +70,16 @@ gulp.task('watch', function () {
 });
 
 function minifyJs(srcList,filename){
+
   gulp.src(srcList)
     .pipe(sourcemaps.init())
     .pipe(concat(filename+'.js'))
-    .pipe(uglify())
+    .pipe(uglify().on('error', function(e){
+            console.log(e);
+         }))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('./js'));
+    
 }
 
 gulp.task('build',['css','scripts']);
