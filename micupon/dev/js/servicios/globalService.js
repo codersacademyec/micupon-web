@@ -31,6 +31,7 @@ function globalService($http,$rootScope) {
     function manageSuccess(response){
         dismissWait();
         if(successMessage != ""){showNot(successMessage,'success');}
+        
         return response.data;
     }
 
