@@ -20,8 +20,9 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
                     })
                     .then(function(res) {
                         $rootScope.user.perfil = res.data[0];
+                        buscar();
                     }, function(err) {
-                        // Error
+                        console.log(err);
                     });
             }
         });
