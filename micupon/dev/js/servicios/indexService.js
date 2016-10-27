@@ -87,19 +87,19 @@ function indexService(globalService,socialProvider) {
     }
 
     function saveItem(codeId, user){
-        Stamplay.Object("cupones_usuarios").get({usuario:'580a08882be61c073254b8d6'}) // buscamos codigos enviados del usuario
+        Stamplay.Object("cupones_usuarios").get({usuario:[user._id]}) // buscamos codigos enviados del usuario
         .then(function(response) {
             if(response.data && response.data.length > 0){ // si hay registro para el usuario
                 response.data[0].codigos.push(codeId); // agregamos uno más a la lista de codigos
                 console.log(response.data[0].codigos);
-                Stamplay.Object("cupones_usuarios").patch('580a08882be61c073254b8d6',{codigos:response.data[0].codigos}) // actualizamos los codigos enviados del usuario
+                Stamplay.Object("cupones_usuarios").update([user._id],usuario) // actualizamos los codigos enviados del usuario
                 .then(function(res) {
                     notificaciones(user);
                 }, function(err) {
                    console.log(err);
                 }) 
             }else{
-                var data = {usuario:['580a08882be61c073254b8d6'], codigos:[codeId]};
+                var data = {usuario:[user._id], codigos:[codeId]};
                 Stamplay.Object("cupones_usuarios").save(data) // creamos un registro para el usuario en cupones_usuario
                 .then(function(res) {
                     notificaciones(user);
