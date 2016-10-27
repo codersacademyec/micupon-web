@@ -67,12 +67,12 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
     };
 
     vm.guardar = function(item) {
-        if(!$rootScope.user){
+        /*if(!$rootScope.user){
             $('#login-dialog').modal();
         }
-        else{
+        else{*/
             indexService.nuevo(item,$rootScope.user);
-        }
+        /*}*/
     };
 
     vm.limpiarFiltros = function() {

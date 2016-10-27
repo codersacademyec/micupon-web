@@ -29,38 +29,41 @@ function indexService(globalService,socialProvider) {
             }
         });*/
 
-
         return Stamplay.Object("cupones").get(filter)
         .then(function(res) {
                 if(res.data){
-                    cupones = [];                    
-                    for (var i = res.data.length - 1; i >= 0; i--) {
-                        cupon = res.data[i]; // tomamos el cupon
-                        cupon.flag = false; // seteamos que sea editable
-                        if(user){ // si hay usuario logueado
-                            Stamplay.Object("cupones_usuarios").get({usuario:user._id}) // buscamos los codigos que tiene enviados el usuario
-                            .then(function(response) {
-                                if(response){
-                                    for (var j = response.data.length - 1; j >= 0; j--) {
-                                       for (var k = response.data[j].codigos.length - 1; k >= 0; k--) {
-                                           if(cupon._id == response.data[j].codigos[k]){ // si alguno de los codigos que vienen ya fue enviado para el usuario, lo deshabilitamos
+                    cupones = [];
+                    //if(user){ // si hay usuario logueado
+                        Stamplay.Object("cupones_usuarios").get({usuario:'580a08882be61c073254b8d6'}) // buscamos los codigos que tiene enviados el usuario
+                        .then(function(response) {
+                            if(response.data.length > 0){
+                                var cuponesEnviados = response.data;
+                                for (var i = res.data.length - 1; i >= 0; i--) {
+                                    var cupon = res.data[i]; // tomamos el cupon
+                                    cupon.flag = false; // seteamos que sea editable
+
+                                    for (var j = cuponesEnviados.length - 1; j >= 0; j--) {
+                                       for (var k = cuponesEnviados[j].codigos.length - 1; k >= 0; k--) {
+                                            console.log(cupon._id);
+                                            console.log(cuponesEnviados[j].codigos[k]);
+                                            console.log(cupon._id == cuponesEnviados[j].codigos[k]);
+                                           if(cupon._id == cuponesEnviados[j].codigos[k]){ // si alguno de los codigos que vienen ya fue enviado para el usuario, lo deshabilitamos
                                             cupon.flag = true; // seteamos que no sea editable porque ya se envió este cupon
                                         }
                                        }                                       
-                                    } 
-                                }                          
-                            }, function(err) {
-                                // TODO MOSTRAR ERROR
-                            })
-                        } 
-                        cupones.push(cupon); // agregamos el cupon modificado
-                    }
+                                    }
+                                    cupones.push(cupon); // agregamos el cupon modificado
+                                }
+                                return cupones;
+                            }                  
+                        }, function(err) {
+                            console.log(err);
+                        })
+                    //}                    
                 }
-                res.data = cupones; // pisamos los cupones
                 return res.data;
 
             }, function(err) {
-                // TODO MOSTRAR ERROR
               console.log(err);
         });
     }
@@ -84,18 +87,19 @@ function indexService(globalService,socialProvider) {
     }
 
     function saveItem(codeId, user){
-        Stamplay.Object("cupones_usuarios").get({usuario:user._id}) // buscamos codigos enviados del usuario
+        Stamplay.Object("cupones_usuarios").get({usuario:'580a08882be61c073254b8d6'}) // buscamos codigos enviados del usuario
         .then(function(response) {
-            if(response && response.length > 0){ // si hay registro para el usuario
-                response.codigos.push(codeId); // agregamos uno más a la lista de codigos
-                Stamplay.Object("cupones_usuarios").patch(response._id,{codigos:response.codigos}) // actualizamos los codigos enviados del usuario
+            if(response.data && response.data.length > 0){ // si hay registro para el usuario
+                response.data[0].codigos.push(codeId); // agregamos uno más a la lista de codigos
+                console.log(response.data[0].codigos);
+                Stamplay.Object("cupones_usuarios").patch('580a08882be61c073254b8d6',{codigos:response.data[0].codigos}) // actualizamos los codigos enviados del usuario
                 .then(function(res) {
                     notificaciones(user);
                 }, function(err) {
                    console.log(err);
                 }) 
             }else{
-                var data = {usuario:[user._id], codigos:[codeId]};
+                var data = {usuario:['580a08882be61c073254b8d6'], codigos:[codeId]};
                 Stamplay.Object("cupones_usuarios").save(data) // creamos un registro para el usuario en cupones_usuario
                 .then(function(res) {
                     notificaciones(user);
