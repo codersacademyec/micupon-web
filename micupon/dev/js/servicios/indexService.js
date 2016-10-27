@@ -14,8 +14,7 @@ function indexService(globalService,socialProvider) {
         Stamplay.User.socialLogin(socialProvider[i]);    
     }
     
-    function getItems(filter, user) {  //TODO VER PORQUE CONSULTA PRIMERO Y LUEGO VERIFICA SI EL USER ESTÁ LOGUEADO - HACE QUE NUNCA LLEGUE EL USER Y SE PUEDAN DESHABILITAR LOS CUPONES ENVIADOS
-        
+    function getItems(filter, user) { 
         /*var codeblock = new Stamplay.Codeblock("cuponespersonas");
         var data = {user : user, filtro: filter};
 
@@ -33,8 +32,8 @@ function indexService(globalService,socialProvider) {
         .then(function(res) {
                 if(res.data){
                     cupones = [];
-                    //if(user){ // si hay usuario logueado
-                        Stamplay.Object("cupones_usuarios").get({usuario:'580a08882be61c073254b8d6'}) // buscamos los codigos que tiene enviados el usuario
+                    if(user){ // si hay usuario logueado
+                        Stamplay.Object("cupones_usuarios").get({usuario:user.perfil.id}) // buscamos los codigos que tiene enviados el usuario
                         .then(function(response) {
                             if(response.data.length > 0){
                                 var cuponesEnviados = response.data;
@@ -44,9 +43,6 @@ function indexService(globalService,socialProvider) {
 
                                     for (var j = cuponesEnviados.length - 1; j >= 0; j--) {
                                        for (var k = cuponesEnviados[j].codigos.length - 1; k >= 0; k--) {
-                                            console.log(cupon._id);
-                                            console.log(cuponesEnviados[j].codigos[k]);
-                                            console.log(cupon._id == cuponesEnviados[j].codigos[k]);
                                            if(cupon._id == cuponesEnviados[j].codigos[k]){ // si alguno de los codigos que vienen ya fue enviado para el usuario, lo deshabilitamos
                                             cupon.flag = true; // seteamos que no sea editable porque ya se envió este cupon
                                         }
@@ -59,9 +55,9 @@ function indexService(globalService,socialProvider) {
                         }, function(err) {
                             console.log(err);
                         })
-                    //}                    
+                    }                    
                 }
-                return res.data;
+                return res.data;                
 
             }, function(err) {
               console.log(err);

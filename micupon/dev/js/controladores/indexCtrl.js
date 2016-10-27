@@ -22,7 +22,7 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
                         console.log(err);
                     })
             }
-			vm.buscar();       
+			vm.buscar();
         });
 
     vm.modalEliminar = $modal({
@@ -72,6 +72,7 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
         }
         else{
             indexService.nuevo(item,$rootScope.user);
+            vm.buscar();
         }
     };
 
