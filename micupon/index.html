@@ -110,7 +110,7 @@
                         <!-- LOGIN REGISTER LINKS -->
                         <ul class="login-register">
                             <li class="shopping-cart"><a href="#"><i class="fa"></i>Ayuda</a></li>
-                            <li ng-if="user"><a class="popup-text" style="cursor:pointer;" data-toggle="modal" ng-click="ctrl.globalService.logout()"><i class="fa fa-sign-in"></i>Cerrar Sesi&oacute;n</a>
+                            <li ng-if="user"><a class="popup-text" style="cursor:pointer;" data-toggle="modal" ng-click="ctrl.globalService.logout(); ctrl.buscar();"><i class="fa fa-sign-in"></i>Cerrar Sesi&oacute;n</a>
                             <li ng-if="!user"><a class="popup-text" style="cursor:pointer;" data-toggle="modal" data-target="#login-dialog"><i class="fa fa-sign-in" data-dismiss="modal"></i>Iniciar Sesi&oacute;n</a>
                             </li>
                             <li ng-if="!user"><a class="popup-text" style="cursor:pointer;" 
