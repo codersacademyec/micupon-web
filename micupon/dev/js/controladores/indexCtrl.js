@@ -72,8 +72,8 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
             $('#login-dialog').modal();
         }
         else{
-            indexService.nuevo(item,$rootScope.user);
-            vm.buscar();
+            indexService.nuevo(item._id,$rootScope.user);
+            item.flag = true;
         }
     };
 
