@@ -38,7 +38,7 @@
     <script>
         var alertId = 0;
         function addAlert(){
-            var alert = '<div class="alert alert-success fade in alert_'+alertId+'" role="alert"> Cupon enviado exitosamente.</div>'
+            var alert = '<div class="alert alert-success fade in alert_'+alertId+'" role="alert"> Cupon enviado exitosamente.</div>';
             setTimeout(function() {
                 $('.alert')[0].remove();
             }, 3000);
@@ -55,7 +55,7 @@
         autorefreshSocialLogin : true
       });
     </script>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="async"></script>
     <script>
         var OneSignal = window.OneSignal || [];
         OneSignal.push(["init", {
@@ -113,8 +113,7 @@
                             <li ng-if="user"><a class="popup-text" style="cursor:pointer;" data-toggle="modal" ng-click="ctrl.globalService.logout()"><i class="fa fa-sign-in"></i>Cerrar Sesi&oacute;n</a>
                             <li ng-if="!user"><a class="popup-text" style="cursor:pointer;" data-toggle="modal" data-target="#login-dialog"><i class="fa fa-sign-in"></i>Iniciar Sesi&oacute;n</a>
                             </li>
-                            <li ng-if="!user"><a class="popup-text" href="#register-dialog"><i class="fa fa-edit"></i>Registrarse</a>
-                            </li>
+                            <li ng-if="!user"><a class="popup-text" href="#register-dialog"><i class="fa fa-edit"></i>Registrarse</a></li>
                         </ul>
                     </div>
                 </div>
@@ -416,7 +415,7 @@
                                     <div>
                                     <p>
                                         <form>
-                                            <button ng-click="ctrl.guardar(cupon._id)" ng-disabled="cupon.flag" class="btn btn-primary">Enviar Cupon</button>
+                                            <button ng-click="ctrl.guardar(cupon)" ng-disabled="cupon.flag" class="btn btn-primary">Enviar Cupon</button>
                                         </form>
                                     </p>
                                     </div>
@@ -453,8 +452,6 @@
         <!-- //////////////////////////////////
 	//////////////END PAGE CONTENT///////// 
 	////////////////////////////////////-->
-
-
 
         <!-- //////////////////////////////////
 	//////////////MAIN FOOTER////////////// 
@@ -506,7 +503,7 @@
                             <div class="twitter-ticker" id="twitter-ticker">
                             
                             <div id="tweet"></div>
-<a class="twitter-timeline" data-lang="es" data-height="200" data-dnt="true" href="https://twitter.com/u4innovation">Tweets by u4innovation</a> <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>                            </div>
+<a class="twitter-timeline" data-lang="es" data-height="200" data-dnt="true" href="https://twitter.com/u4innovation">Tweets by u4innovation</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>                            </div>
                             <!-- END TWITTER -->
                         </div>
                         <div class="col-md-3">

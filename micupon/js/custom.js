@@ -301,7 +301,7 @@ $(document).ready(function() {
     };
     ticker();
 
-
+/*
      // footer always on bottom
     var docHeight = $(window).height();
    var footerHeight = $('#main-footer').height();
@@ -310,7 +310,7 @@ $(document).ready(function() {
    if (footerTop < docHeight) {
     $('#main-footer').css('margin-top', (docHeight - footerTop) + 'px');
    }
-
+*/
 });
 
 

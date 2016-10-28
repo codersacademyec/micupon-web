@@ -10,7 +10,7 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
     vm.nuevo = {};
     vm.itemSeleccionado = {};
  
-
+    //$rootScope.user = {"_id":"57feba3ca3b12b294d4891c0","appId":"micupon","displayName":"Gonzalo Aller","name":{"familyName":"Aller","givenName":"Gonzalo"},"pictures":{"google":"https://lh5.googleusercontent.com/-5HPa6h3FB88/AAAAAAAAAAI/AAAAAAAAB_4/i0qyKV7fxjg/photo.jpg"},"givenRole":"57eff5d03054317a6c37998b","email":"gonzaller@gmail.com","identities":{"google":{"googleUid":"108349644188900323702","refreshToken":"1/LVl2DtrAwk_WpPTLe2m-gHY7Zz05Bqou9_shgoaBZwksHjrrZIvuhpe-_ZOYsf0j","_json":{"locale":"es-419","gender":"male","picture":"https://lh5.googleusercontent.com/-5HPa6h3FB88/AAAAAAAAAAI/AAAAAAAAB_4/i0qyKV7fxjg/photo.jpg","link":"https://plus.google.com/108349644188900323702","family_name":"Aller","given_name":"Gonzalo","name":"Gonzalo Aller","verified_email":true,"email":"gonzaller@gmail.com","id":"108349644188900323702"},"emails":[{"value":"gonzaller@gmail.com"}],"accessToken":"ya29.Ci-JA59y1vCARcb5SrKPJsDEx94EHBgxNleqmSBX100uILEO0RGB_RP8LJ18CyxWKA"}},"__v":0,"dt_update":"2016-10-27T23:18:31.741Z","dt_create":"2016-10-12T22:33:32.096Z","emailVerified":true,"verificationCode":"f5f70b492d430bfc262f","profileImg":"https://lh5.googleusercontent.com/-5HPa6h3FB88/AAAAAAAAAAI/AAAAAAAAB_4/i0qyKV7fxjg/photo.jpg","id":"57feba3ca3b12b294d4891c0","perfil":{"_id":"57fec0700d63f676601f24ac","sexo":"male","nombre":"Gonzalo","email":"gonzaller@gmail.com","apellido":"Aller","owner":"57feba3ca3b12b294d4891c0","appId":"micupon","cobjectId":"usuarios","actions":{"comments":[],"ratings":{"users":[],"avg":0,"total":0},"votes":{"users_downvote":[],"users_upvote":[],"users":[],"total":0}},"dt_update":"2016-10-18T00:44:53.929Z","dt_create":"2016-10-12T23:00:00.844Z","__v":0,"push_token":"62fd3d375167014fbc29a812704fb29a5bd6c0a4d791436dd56a5c7d209e4532","id":"57fec0700d63f676601f24ac"}};
     AccountService.currentUser()
         .then(function(user) {
             if (user || $rootScope.user) {
@@ -18,11 +18,11 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
                 Stamplay.Object("usuarios").get({owner: $rootScope.user._id})
                     .then(function(res) {
                         $rootScope.user.perfil = res.data[0];
+                        vm.buscar();
                     }, function(err) {
                         console.log(err);
-                    })
+                    });
             }
-			vm.buscar();
         });
 
     vm.modalEliminar = $modal({
@@ -51,7 +51,8 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
         indexService.busqueda(vm.filtros, $rootScope.user).then(function(data) {
             vm.cupones = data;
             vm.showFiltros = false;
-            $scope.$apply();
+            $scope.$digest();
+            console.log(data);
         });
     };
 
@@ -79,5 +80,5 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
     vm.limpiarFiltros = function() {
         vm.filtros = {};
     };
-    
+    //vm.buscar();
 }

@@ -15,52 +15,13 @@ function indexService(globalService,socialProvider) {
     }
     
     function getItems(filter, user) { 
-        /*var codeblock = new Stamplay.Codeblock("cuponespersonas");
-        var data = {user : user, filtro: filter};
-
-        codeblock.run(data, {}, function (err, response) {
-            if(response.length > 0){
-                console.log(response);
-                return response;
-            }else if (err != null) {                        
-                console.log(err);
-                return null;
-            }
-        });*/
-
-        return Stamplay.Object("cupones").get(filter)
-        .then(function(res) {
-                if(res.data){
-                    cupones = [];
-                    if(user){ // si hay usuario logueado
-                        Stamplay.Object("cupones_usuarios").get({usuario:user.perfil.id}) // buscamos los codigos que tiene enviados el usuario
-                        .then(function(response) {
-                            if(response.data.length > 0){
-                                var cuponesEnviados = response.data;
-                                for (var i = res.data.length - 1; i >= 0; i--) {
-                                    var cupon = res.data[i]; // tomamos el cupon
-                                    cupon.flag = false; // seteamos que sea editable
-
-                                    for (var j = cuponesEnviados.length - 1; j >= 0; j--) {
-                                       for (var k = cuponesEnviados[j].codigos.length - 1; k >= 0; k--) {
-                                           if(cupon._id == cuponesEnviados[j].codigos[k]){ // si alguno de los codigos que vienen ya fue enviado para el usuario, lo deshabilitamos
-                                            cupon.flag = true; // seteamos que no sea editable porque ya se envió este cupon
-                                        }
-                                       }                                       
-                                    }
-                                    cupones.push(cupon); // agregamos el cupon modificado
-                                }
-                                return cupones;
-                            }                  
-                        }, function(err) {
-                            console.log(err);
-                        })
-                    }                    
-                }
-                return res.data;                
-
-            }, function(err) {
-              console.log(err);
+        var data = {user : { _id: user._id, perfil: user.perfil }, filtro: filter};
+        var codeblock = new Stamplay.Codeblock("cuponespersonas");
+        return codeblock.run(data).then(function (response) {
+          return response;
+        }, function( err ){
+          console.error(err);
+          return null;
         });
     }
 
