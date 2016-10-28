@@ -875,6 +875,8 @@ label {
   position: relative;
   -webkit-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
+  max-height: 150px;
+  max-width: 300px;
 }
 .product-quick-view,
 .product-secondary-image {

@@ -408,9 +408,11 @@
                     <div class="row row-wrap">
                         <a class="col-md-4" href="#" ng-repeat="cupon in ctrl.cupones">
                             <div class="product-thumb">
-                                <header class="product-header">
-                                    <img ng-src="img/{{cupon.nombre_img}}" alt="Nombre alternativo de la imagen" ng-title="{{cupon.titulo}}" />
-                                </header>
+                                <center>
+                                    <header class="product-header">
+                                            <img ng-src="img/{{cupon.nombre_img}}" alt="Nombre alternativo de la imagen" ng-title="{{cupon.titulo}}" />
+                                    </header>
+                                </center>
                                 <div class="product-inner">
                                     <h5 class="product-title">{{cupon.titulo}}</h5>
                                     <p class="product-desciption">{{cupon.descripcion}}</p>
