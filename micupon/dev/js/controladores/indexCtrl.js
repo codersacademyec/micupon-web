@@ -22,6 +22,8 @@ function indexCtrl($scope, $rootScope, globalService, indexService, AccountServi
                     }, function(err) {
                         console.log(err);
                     });
+            }else{
+                vm.buscar();
             }
         });
 

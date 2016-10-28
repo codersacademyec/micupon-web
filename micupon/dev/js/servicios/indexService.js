@@ -14,8 +14,11 @@ function indexService(globalService,socialProvider) {
         Stamplay.User.socialLogin(socialProvider[i]);    
     }
     
-    function getItems(filter, user) { 
-        var data = {user : { _id: user._id, perfil: user.perfil }, filtro: filter};
+    function getItems(filter, user) {
+        var data = {filtro: filter};
+        if(user){
+            data = {user : { _id: user._id, perfil: user.perfil }, filtro: filter};
+        }
         var codeblock = new Stamplay.Codeblock("cuponespersonas");
         return codeblock.run(data).then(function (response) {
           return response;

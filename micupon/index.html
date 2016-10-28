@@ -111,9 +111,12 @@
                         <ul class="login-register">
                             <li class="shopping-cart"><a href="#"><i class="fa"></i>Ayuda</a></li>
                             <li ng-if="user"><a class="popup-text" style="cursor:pointer;" data-toggle="modal" ng-click="ctrl.globalService.logout()"><i class="fa fa-sign-in"></i>Cerrar Sesi&oacute;n</a>
-                            <li ng-if="!user"><a class="popup-text" style="cursor:pointer;" data-toggle="modal" data-target="#login-dialog"><i class="fa fa-sign-in"></i>Iniciar Sesi&oacute;n</a>
+                            <li ng-if="!user"><a class="popup-text" style="cursor:pointer;" data-toggle="modal" data-target="#login-dialog"><i class="fa fa-sign-in" data-dismiss="modal"></i>Iniciar Sesi&oacute;n</a>
                             </li>
-                            <li ng-if="!user"><a class="popup-text" href="#register-dialog"><i class="fa fa-edit"></i>Registrarse</a></li>
+                            <li ng-if="!user"><a class="popup-text" style="cursor:pointer;" 
+                                data-toggle="modal" data-target="#register-dialog" data-dismiss="modal">
+                                <i class="fa fa-edit"></i>Registrarse</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -141,75 +144,82 @@
                     </label>
                 </div>
                 <div class="form-group">
-                    <!--input type="submit" value="Iniciar Sesion" class="btn btn-success"-->
+                    <input type="submit" value="Iniciar Sesion" class="btn btn-success" ng-disabled="true">
                     <button ng-click="ctrl.ingresar(0)" class="btn btn-primary">Facebook</button>
                     <button ng-click="ctrl.ingresar(1)" class="btn btn-danger">Google</button>
                 </div>
             </form>
             <ul class="dialog-alt-links">
-                <li><a class="popup-text" href="#register-dialog" data-effect="mfp-zoom-out">No soy miembro</a>
+                <li><a class="popup-text" style="cursor:pointer;" data-toggle="modal" data-target="#register-dialog" 
+                    data-effect="mfp-zoom-out" data-dismiss="modal">No soy miembro</a>
                 </li>
-                <li><a class="popup-text" href="#password-recover-dialog" data-effect="mfp-zoom-out">Olvid&eacute; mi clave</a>
+                <li><a class="popup-text" style="cursor:pointer;" data-toggle="modal" data-target="#password-recover-dialog" 
+                    data-effect="mfp-zoom-out" data-dismiss="modal">Olvid&eacute; mi clave</a>
                 </li>
             </ul>
             </div>
         </div>
 
 
-        <div id="register-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
-            <i class="fa fa-edit dialog-icon"></i>
-            <h3>Registrarse</h3>
-            <h5>Aun no utilizas nuestros cupones? V&aacute;mos! R&eacute;gistrate!</h5>
-            <form class="dialog-form">
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="text" placeholder="email@dominio.com" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Clave</label>
-                    <input type="password" placeholder="Mi Clave Secreta" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Repetir Clave</label>
-                    <input type="password" placeholder="Re ingresa tu clave" class="form-control">
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <label>Localidad</label>
-                            <input type="password" placeholder="Guayaquil" class="form-control">
+        <div id="register-dialog" class="modal fade clearfix">
+            <div class="modal-content mfp-dialog">
+                <i class="fa fa-edit dialog-icon"></i>
+                <h3>Registrarse</h3>
+                <h5>Aun no utilizas nuestros cupones? V&aacute;mos! R&eacute;gistrate!</h5>
+                <form class="dialog-form">
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="text" placeholder="email@dominio.com" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Clave</label>
+                        <input type="password" placeholder="Mi Clave Secreta" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Repetir Clave</label>
+                        <input type="password" placeholder="Re ingresa tu clave" class="form-control">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>Localidad</label>
+                                <input type="password" placeholder="Guayaquil" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>C&oacute;digo Postal</label>
+                                <input type="password" placeholder="12345" class="form-control">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>C&oacute;digo Postal</label>
-                            <input type="password" placeholder="12345" class="form-control">
-                        </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox">Recibir ofertas por email
+                        </label>
                     </div>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">Recibir ofertas por email
-                    </label>
-                </div>
-                <input type="submit" value="Registrarse" class="btn btn-primary">
-            </form>
-            <ul class="dialog-alt-links">
-                <li><a class="popup-text" href="#login-dialog" data-effect="mfp-zoom-out">Ya soy miembro</a>
-                </li>
-            </ul>
+                    <input type="submit" value="Registrarse" class="btn btn-primary">
+                </form>
+                <ul class="dialog-alt-links">
+                    <li><a class="popup-text" style="cursor:pointer;" data-toggle="modal" 
+                        data-target="#login-dialog" data-effect="mfp-zoom-out" data-dismiss="modal">Ya soy miembro</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
 
-        <div id="password-recover-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
-            <i class="icon-retweet dialog-icon"></i>
-            <h3>Recuperaci&oacute;n de clave</h3>
-            <h5>Olvid&oacute; su clave? No te preocupes te la enviamos nuevamente!</h5>
-            <form class="dialog-form">
-                <label>E-mail</label>
-                <input type="text" placeholder="email@dominio.com" class="span12">
-                <input type="submit" value="Recuperar clave" class="btn btn-primary">
-            </form>
+        <div id="password-recover-dialog" class="modal fade clearfix">
+            <div class="modal-content mfp-dialog">
+                <i class="fa fa-sign-in dialog-icon"></i>
+                <h3>Recuperaci&oacute;n de clave</h3>
+                <h5>Olvid&oacute; su clave? No te preocupes te la enviamos nuevamente!</h5>
+                <form class="dialog-form">
+                    <label>E-mail</label>
+                    <input type="text" placeholder="email@dominio.com" class="span12">
+                    <input type="submit" value="Recuperar clave" class="btn btn-primary">
+                </form>
+            </div>
         </div>
         <!-- END LOGIN REGISTER LINKS CONTENT -->
 
